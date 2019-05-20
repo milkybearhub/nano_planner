@@ -29,6 +29,25 @@ module.exports = (env, options) => ({
           loader: 'babel-loader'
         }
       },
+      {
+        test: /\.scss/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+              importLoaders: 2
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              importer: GlobImporter()
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [
