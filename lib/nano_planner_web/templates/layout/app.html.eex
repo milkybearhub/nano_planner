@@ -5,16 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>NanoPlanner</title>
-    <%= tag :link, rel: "stylesheet", href: Routes.static_path(@conn, "/css/app.css") %>
+    <%= tag :link, rel: "stylesheet",
+      href: Routes.static_path(@conn, "/css/app.css") %>
+    <%= tag :link, rel: "shortcut icon",
+      href: Routes.static_path(@conn, "/images/nano_planner.ico") %>
+    <%= tag :link, rel: "apple-touch-icon",
+      href: Routes.static_path(@conn, "/images/clock256.png") %>
   </head>
   <body>
     <header>
+      <h1><%= link "NanoPlanner", to: Routes.top_path(@conn, :index, []) %></h1>
     </header>
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
     </main>
-    <%= content_tag :script, "", src: Routes.static_path(@conn, "/js/app.js") %>
+  <footer>
+    &copy; 2019 Oiax Inc.
+  </footer>
+  <%= content_tag :script, "", src: Routes.static_path(@conn, "/js/app.js") %>
   </body>
 </html>
